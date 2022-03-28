@@ -1,4 +1,4 @@
-package com.tsci.factsonnumbers.ui.theme
+package com.tsci.factsonnumbers.presentation.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
