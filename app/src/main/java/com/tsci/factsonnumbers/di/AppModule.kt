@@ -2,6 +2,8 @@ package com.tsci.factsonnumbers.di
 
 import com.tsci.cryptocurrencyapp.common.Constants
 import com.tsci.factsonnumbers.data.remote.NumberFactsApi
+import com.tsci.factsonnumbers.data.repository.NumberFactsRepository
+import com.tsci.factsonnumbers.data.repository.NumberFactsRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,5 +24,10 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(NumberFactsApi::class.java)
+    }
+    @Provides
+    @Singleton
+    fun provideNumberFactsRepository(api: NumberFactsApi): NumberFactsRepository{
+        return NumberFactsRepositoryImpl(api)
     }
 }
