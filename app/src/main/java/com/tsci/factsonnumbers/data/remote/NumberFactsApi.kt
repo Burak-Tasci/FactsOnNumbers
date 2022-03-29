@@ -17,6 +17,9 @@ interface NumberFactsApi {
         @Path(value = "day") day: String
     ): String
 
+    @GET("/{number}/year")
+    suspend fun getYearInfoByNumber(@Path(value = "number") number: String): String
+
     @GET(value = "/random/trivia")
     suspend fun getRandomTriviaInfo(): String
 

@@ -9,6 +9,8 @@ interface NumberFactsRepository {
 
     suspend fun getDateInfoByNumber(month: String, day: String): String
 
+    suspend fun getYearInfoByNumber(number: String): String
+
     suspend fun getRandomTriviaInfo(): String
 
     suspend fun getRandomMathInfo(): String

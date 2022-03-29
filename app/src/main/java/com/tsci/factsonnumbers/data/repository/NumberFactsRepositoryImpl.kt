@@ -18,6 +18,10 @@ class NumberFactsRepositoryImpl @Inject constructor(
         return api.getDateInfoByNumber(month = month, day = day)
     }
 
+    override suspend fun getYearInfoByNumber(number: String): String {
+        return api.getYearInfoByNumber(number = number)
+    }
+
     override suspend fun getRandomTriviaInfo(): String {
         return api.getRandomTriviaInfo()
     }
