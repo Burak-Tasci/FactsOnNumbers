@@ -1,6 +1,5 @@
 package com.tsci.factsonnumbers.presentation.facts_options
 
-import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -8,21 +7,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.tsci.factsonnumbers.presentation.facts_options.components.OptionsListItem
 import com.tsci.factsonnumbers.presentation.ui.Screen
-
+import com.tsci.factsonnumbers.common.ApiWay
 /*
     Main screen
  */
 @Composable
 fun OptionsListScreen(
     navController: NavController,
-    viewModel: OptionsListViewModel = hiltViewModel()
 ) {
 
-    val state = viewModel.state.value
     Surface(
         color = MaterialTheme.colors.background,
 
@@ -34,17 +30,47 @@ fun OptionsListScreen(
 
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            repeat(4) {
-                ButtonsRow(
-                    onClick1 = {
-                        viewModel.getTriviaInfoByNumber("3")
-                        navController.navigate(Screen.FactDetailScreen.route + "/${state.fact}")
+            ButtonsRow(
+                text1 = "Trivia Info By Number",
+                onClick1 = {
+                    navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.TRIVIA}")
                 },
-                    onClick2 = {
-                        viewModel.getTriviaInfoByNumber("13")
-                        navController.navigate(Screen.FactDetailScreen.route + "/${state.fact}")
-                    })
-            }
+                text2 = "Math Info By Number",
+                onClick2 = {
+                    navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.MATH}")
+                }
+            )
+            ButtonsRow(
+                text1 = "Date Info By Number",
+                onClick1 = {
+                    navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.DATE}")
+                },
+                text2 = "Year Info By Number",
+                onClick2 = {
+                    navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.YEAR}")
+                }
+            )
+            ButtonsRow(
+                text1 = "Random Trivia Info By Number",
+                onClick1 = {
+                    navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.RANDOM_TRIVIA}")
+                },
+                text2 = "Random Math Info By Number",
+                onClick2 = {
+                    navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.RANDOM_MATH}")
+                }
+            )
+            ButtonsRow(
+                text1 = "Random Date Info By Number",
+                onClick1 = {
+                    navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.RANDOM_DATE}")
+                },
+                text2 = "Random Year Info By Number",
+                onClick2 = {
+                    navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.RANDOM_YEAR}")
+                }
+            )
+
         }
     }
 }
