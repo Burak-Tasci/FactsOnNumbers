@@ -1,5 +1,7 @@
 package com.tsci.factsonnumbers.presentation
 
+
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -18,16 +21,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.tsci.factsonnumbers.R
+import com.tsci.factsonnumbers.common.ApiWay
 import com.tsci.factsonnumbers.presentation.fact_detail.FactDetailScreen
 import com.tsci.factsonnumbers.presentation.facts_options.OptionsListScreen
 import com.tsci.factsonnumbers.presentation.ui.Screen
 import com.tsci.factsonnumbers.presentation.ui.theme.FactsOnNumbersTheme
 import dagger.hilt.android.AndroidEntryPoint
 
-/*
-    App's starting screen is determining here. MainActivity.kt class is building skeleton
-    of UI and configures navigation.
- */
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,30 +67,34 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@Preview("Light Mode")
+@Preview(
+    name = "Dark Mode",
+    uiMode = UI_MODE_NIGHT_YES,
+    showBackground = true
+)
 @Composable
-fun App(){
+fun App() {
     val navController = rememberNavController()
     NavHost(
-        navController =  navController,
+        navController = navController,
         startDestination = Screen.OptionsListScreen.route
-    ){
+    ) {
         composable(
             route = Screen.OptionsListScreen.route
-        ){
+        ) {
             OptionsListScreen(navController)
         }
         composable(
-            route = Screen.FactDetailScreen.route + "/{fact}",
+            route = Screen.FactDetailScreen.route + "/{select}",
             arguments = listOf(
-                navArgument("fact"){
-                    type = NavType.StringType
+                navArgument("select"){
+                    type = NavType.inferFromValueType(ApiWay.TRIVIA)
                 }
             )
-        ){  item ->
-
-            FactDetailScreen(
-                item = item.arguments?.getString("fact")
-            )
+        ) {
+            val apiWay: ApiWay = (it.arguments?.get("select") as ApiWay ?: null) as ApiWay
+            FactDetailScreen(apiWay = apiWay)
         }
     }
 }
