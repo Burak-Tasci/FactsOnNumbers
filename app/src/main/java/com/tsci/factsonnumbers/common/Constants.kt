@@ -1,6 +1,6 @@
 package com.tsci.cryptocurrencyapp.common
 
 object Constants {
-
-    const val BASE_URL = "http://numbersapi.com/"
+    // Base URL for reaching api
+    const val BASE_URL = "http://numbersapi.com"
 }

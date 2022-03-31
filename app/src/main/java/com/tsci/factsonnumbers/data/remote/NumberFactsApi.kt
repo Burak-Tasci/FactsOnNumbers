@@ -2,7 +2,9 @@ package com.tsci.factsonnumbers.data.remote
 
 import retrofit2.http.GET
 import retrofit2.http.Path
-
+/*
+    Declaration of api requests
+ */
 interface NumberFactsApi {
 
     @GET("/{number}")
@@ -16,6 +18,9 @@ interface NumberFactsApi {
         @Path(value = "month") month: String,
         @Path(value = "day") day: String
     ): String
+
+    @GET("/{number}/year")
+    suspend fun getYearInfoByNumber(@Path(value = "number") number: String): String
 
     @GET(value = "/random/trivia")
     suspend fun getRandomTriviaInfo(): String
