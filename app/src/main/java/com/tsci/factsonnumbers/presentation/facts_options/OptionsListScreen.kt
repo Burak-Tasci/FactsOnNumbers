@@ -1,5 +1,6 @@
 package com.tsci.factsonnumbers.presentation.facts_options
 
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -8,13 +9,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.SavedStateHandle
+import androidx.navigation.NavController
 import com.tsci.factsonnumbers.presentation.facts_options.components.OptionsListItem
+import com.tsci.factsonnumbers.presentation.ui.Screen
 
+/*
+    Main screen
+ */
 @Composable
 fun OptionsListScreen(
+    navController: NavController,
     viewModel: OptionsListViewModel = hiltViewModel()
 ) {
+
+    val state = viewModel.state.value
     Surface(
         color = MaterialTheme.colors.background,
 
@@ -26,8 +34,16 @@ fun OptionsListScreen(
 
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            repeat(4){
-                ButtonsRow(onClick1 = { /*TODO*/ }, onClick2 = {/* TODO */})
+            repeat(4) {
+                ButtonsRow(
+                    onClick1 = {
+                        viewModel.getTriviaInfoByNumber("3")
+                        navController.navigate(Screen.FactDetailScreen.route + "/${state.fact}")
+                },
+                    onClick2 = {
+                        viewModel.getTriviaInfoByNumber("13")
+                        navController.navigate(Screen.FactDetailScreen.route + "/${state.fact}")
+                    })
             }
         }
     }
@@ -47,7 +63,7 @@ fun ButtonsRow(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
-        OptionsListItem(itemText = "Random Fact", onButtonClick = onClick1)
-        OptionsListItem(itemText = "Random Fact", onButtonClick = onClick2)
+        OptionsListItem(itemText = text1, onButtonClick = onClick1)
+        OptionsListItem(itemText = text2, onButtonClick = onClick2)
     }
 }
