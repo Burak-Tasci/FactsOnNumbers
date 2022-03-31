@@ -11,7 +11,9 @@ import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
-
+/*
+    Dependecy injection module
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {

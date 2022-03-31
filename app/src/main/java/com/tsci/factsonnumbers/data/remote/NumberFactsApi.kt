@@ -2,7 +2,9 @@ package com.tsci.factsonnumbers.data.remote
 
 import retrofit2.http.GET
 import retrofit2.http.Path
-
+/*
+    Declaration of api requests
+ */
 interface NumberFactsApi {
 
     @GET("/{number}")

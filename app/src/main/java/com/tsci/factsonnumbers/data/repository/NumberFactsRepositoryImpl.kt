@@ -2,7 +2,9 @@ package com.tsci.factsonnumbers.data.repository
 
 import com.tsci.factsonnumbers.data.remote.NumberFactsApi
 import javax.inject.Inject
-
+/*
+    Implementation of repository with api interface to be able to create repository functions
+ */
 class NumberFactsRepositoryImpl @Inject constructor(
     private val api: NumberFactsApi
 ): NumberFactsRepository{

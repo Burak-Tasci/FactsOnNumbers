@@ -1,6 +1,8 @@
 package com.tsci.factsonnumbers.data.repository
 
-
+/*
+    An interface to reach api without directly using it
+ */
 interface NumberFactsRepository {
 
     suspend fun getTriviaInfoByNumber(number: String): String
