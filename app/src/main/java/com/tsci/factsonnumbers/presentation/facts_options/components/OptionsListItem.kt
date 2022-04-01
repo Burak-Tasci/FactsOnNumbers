@@ -1,13 +1,13 @@
 package com.tsci.factsonnumbers.presentation.facts_options.components
 
-import android.util.Log
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
@@ -26,7 +26,7 @@ fun OptionsListItem(
         Modifier
             .padding(8.dp)
             .height(100.dp)
-            .width(140.dp),
+            .width(120.dp),
         shape = RoundedCornerShape(20.dp)
 
     ) {
