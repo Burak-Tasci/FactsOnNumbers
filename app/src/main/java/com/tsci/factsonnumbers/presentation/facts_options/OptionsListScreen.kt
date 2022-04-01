@@ -31,41 +31,41 @@ fun OptionsListScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             ButtonsRow(
-                text1 = "Trivia Info By Number",
+                text1 = "Trivia Info",
                 onClick1 = {
                     navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.TRIVIA}")
                 },
-                text2 = "Math Info By Number",
+                text2 = "Math Info",
                 onClick2 = {
                     navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.MATH}")
                 }
             )
             ButtonsRow(
-                text1 = "Date Info By Number",
+                text1 = "Date Info",
                 onClick1 = {
                     navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.DATE}")
                 },
-                text2 = "Year Info By Number",
+                text2 = "Year Info",
                 onClick2 = {
                     navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.YEAR}")
                 }
             )
             ButtonsRow(
-                text1 = "Random Trivia Info By Number",
+                text1 = "Random Trivia Info",
                 onClick1 = {
                     navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.RANDOM_TRIVIA}")
                 },
-                text2 = "Random Math Info By Number",
+                text2 = "Random Math Info",
                 onClick2 = {
                     navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.RANDOM_MATH}")
                 }
             )
             ButtonsRow(
-                text1 = "Random Date Info By Number",
+                text1 = "Random Date Info",
                 onClick1 = {
                     navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.RANDOM_DATE}")
                 },
-                text2 = "Random Year Info By Number",
+                text2 = "Random Year Info",
                 onClick2 = {
                     navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.RANDOM_YEAR}")
                 }
