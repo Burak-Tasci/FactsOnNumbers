@@ -51,10 +51,10 @@ class UseCases @Inject constructor(
     }
 
     inner class GetDateInfoUseCase{
-        operator fun invoke(month: String, day: String): Flow<Resource<String>> = flow {
+        operator fun invoke(day: String, month: String): Flow<Resource<String>> = flow {
             try {
                 emit(Resource.Loading())
-                val fact = repository.getDateInfoByNumber(month = month, day = day)
+                val fact = repository.getDateInfoByNumber(day = day, month = month)
                 Log.d("UseCases", fact)
                 emit(Resource.Success(fact))
             } catch (e: HttpException) {
