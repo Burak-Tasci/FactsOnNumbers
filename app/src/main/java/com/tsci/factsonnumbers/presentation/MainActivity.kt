@@ -88,12 +88,12 @@ fun App() {
         composable(
             route = Screen.FactDetailScreen.route + "/{select}",
             arguments = listOf(
-                navArgument("select"){
+                navArgument("select") {
                     type = NavType.inferFromValueType(ApiWay.TRIVIA)
                 }
             )
         ) {
-            val apiWay: ApiWay = (it.arguments?.get("select") as ApiWay ?: null) as ApiWay
+            val apiWay: ApiWay = it.arguments?.get("select") as ApiWay
             FactDetailScreen(apiWay = apiWay)
         }
     }
