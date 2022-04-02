@@ -15,8 +15,8 @@ interface NumberFactsApi {
 
     @GET(value = "/{month}/{day}/date")
     suspend fun getDateInfoByNumber(
-        @Path(value = "month") month: String,
-        @Path(value = "day") day: String
+        @Path(value = "day") day: String,
+        @Path(value = "month") month: String
     ): String
 
     @GET("/{number}/year")

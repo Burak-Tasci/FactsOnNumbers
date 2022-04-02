@@ -9,7 +9,7 @@ interface NumberFactsRepository {
 
     suspend fun getMathInfoByNumber(number: String): String
 
-    suspend fun getDateInfoByNumber(month: String, day: String): String
+    suspend fun getDateInfoByNumber(day: String, month: String): String
 
     suspend fun getYearInfoByNumber(number: String): String
 
