@@ -1,5 +1,6 @@
 package com.tsci.factsonnumbers.presentation.fact_detail
 
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -54,10 +55,10 @@ class FactDetailViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
-    fun getDateInfoByNumber(month: String, day: String) {
+    fun getDateInfoByNumber(day: String, month: String) {
         useCases.GetDateInfoUseCase().invoke(
-            month = month,
-            day = day
+            day = day,
+            month = month
         ).onEach { result ->
             when (result) {
 
@@ -128,7 +129,6 @@ class FactDetailViewModel @Inject constructor(
     fun getRandomDateInfo() {
         useCases.GetRandomDateInfoUseCase().invoke().onEach { result ->
             when (result) {
-
                 is Resource.Loading -> {
                     _state.value = FactDetailState(isLoading = true)
                 }
@@ -159,33 +159,45 @@ class FactDetailViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
-    fun handleApiWay(apiWay: ApiWay, viewModel: FactDetailViewModel, vararg args:String) {
+    fun handleApiWay(apiWay: ApiWay, viewModel: FactDetailViewModel, vararg args: MutableState<String>): Boolean {
         when (apiWay) {
 
             ApiWay.TRIVIA -> {
-                viewModel.getTriviaInfoByNumber(number = args.first().toString())
+                if (args.first().toString()
+                        .isNotBlank()
+                ) viewModel.getTriviaInfoByNumber(number = args.first().value); return true
             }
             ApiWay.MATH -> {
-                viewModel.getMathInfoByNumber(year = args.first().toString())
+                if (args.first().toString()
+                        .isNotBlank()
+                ) viewModel.getMathInfoByNumber(year = args.first().value); return true
             }
             ApiWay.DATE -> {
-                viewModel.getDateInfoByNumber(day = args.first().toString(), month = args.last().toString())
+                if (args.first().value.isNotBlank() && args.last().value
+                        .isNotBlank()
+                ) viewModel.getDateInfoByNumber(
+                    day = args.last().value,
+                    month = args.first().value
+                ); return true
             }
             ApiWay.YEAR -> {
-                viewModel.getYearInfoByNumber(number = args.first().toString())
+                if (args.first().toString()
+                        .isNotBlank()
+                ) viewModel.getYearInfoByNumber(number = args.first().value); return true
             }
             ApiWay.RANDOM_TRIVIA -> {
-                viewModel.getRandomTriviaInfo()
+                viewModel.getRandomTriviaInfo(); return true
             }
             ApiWay.RANDOM_MATH -> {
-                viewModel.getRandomMathInfo()
+                viewModel.getRandomMathInfo(); return true
             }
             ApiWay.RANDOM_DATE -> {
-                viewModel.getRandomDateInfo()
+                viewModel.getRandomDateInfo(); return true
             }
             ApiWay.RANDOM_YEAR -> {
-                viewModel.getRandomYearInfo()
+                viewModel.getRandomYearInfo(); return true
             }
         }
+        return false
     }
 }
