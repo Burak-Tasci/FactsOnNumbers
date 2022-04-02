@@ -165,11 +165,16 @@ fun FactDetailScreen(
                             showMessage(context, "Invalid Date!")
                         }
                     } else {
-                        viewModel.handleApiWay(
-                            apiWay = apiWay,
-                            viewModel = viewModel,
-                            args = arrayOf(textFieldInputFirst, textFieldInputSecond)
-                        )
+                        if(textFieldInputFirst.value.isNotBlank()){
+                            viewModel.handleApiWay(
+                                apiWay = apiWay,
+                                viewModel = viewModel,
+                                args = arrayOf(textFieldInputFirst, textFieldInputSecond)
+                            )
+                        }
+                        else{
+                            showMessage(context, "Invalid Number!")
+                        }
                     }
 
 
