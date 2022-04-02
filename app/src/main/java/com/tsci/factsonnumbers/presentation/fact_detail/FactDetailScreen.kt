@@ -14,7 +14,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.input.KeyboardType
@@ -153,8 +152,8 @@ fun FactDetailScreen(
                 onClick = {
                     if (apiWay.equals(ApiWay.DATE)) {
                         if (isDateValid(
-                                textFieldInputFirst.value.toInt(),
-                                textFieldInputSecond.value.toInt()
+                                textFieldInputFirst.value.toIntOrNull(),
+                                textFieldInputSecond.value.toIntOrNull()
                             ) && (textFieldInputFirst.value.isNotBlank() && textFieldInputSecond.value.isNotBlank())
                         ) {
                             viewModel.handleApiWay(
@@ -189,12 +188,11 @@ fun FactDetailScreen(
 }
 
 
-private fun isDateValid(day: Int, month: Int): Boolean {
+private fun isDateValid(day: Int?, month: Int?): Boolean {
 
     val dayMonthPairs: HashMap<Int, List<Int>> = HashMap<Int, List<Int>>()
 
     with(dayMonthPairs) {
-
         put(1, IntArray(31) { it + 1 }.toList())
         put(2, IntArray(29) { it + 1 }.toList())
         put(3, IntArray(31) { it + 1 }.toList())
