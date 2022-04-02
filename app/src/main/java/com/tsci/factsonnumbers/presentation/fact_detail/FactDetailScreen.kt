@@ -150,34 +150,42 @@ fun FactDetailScreen(
 
             OutlinedButton(
                 onClick = {
-                    if (apiWay.equals(ApiWay.DATE)) {
-                        if (isDateValid(
-                                textFieldInputFirst.value.toIntOrNull(),
-                                textFieldInputSecond.value.toIntOrNull()
-                            ) && (textFieldInputFirst.value.isNotBlank() && textFieldInputSecond.value.isNotBlank())
-                        ) {
+                    when (apiWay) {
+                        ApiWay.DATE -> {
+                            if (isDateValid(
+                                    textFieldInputFirst.value.toIntOrNull(),
+                                    textFieldInputSecond.value.toIntOrNull()
+                                ) && (textFieldInputFirst.value.isNotBlank() && textFieldInputSecond.value.isNotBlank())
+                            ) {
+                                viewModel.handleApiWay(
+                                    apiWay = apiWay,
+                                    viewModel = viewModel,
+                                    args = arrayOf(textFieldInputFirst, textFieldInputSecond)
+                                )
+                            } else {
+                                showMessage(context, "Invalid Date!")
+                            }
+                        }
+                        ApiWay.TRIVIA, ApiWay.MATH, ApiWay.YEAR -> {
+                            if (textFieldInputFirst.value.isNotBlank()) {
+                                viewModel.handleApiWay(
+                                    apiWay = apiWay,
+                                    viewModel = viewModel,
+                                    args = arrayOf(textFieldInputFirst, textFieldInputSecond)
+                                )
+                            } else {
+                                showMessage(context, "Invalid Number!")
+                            }
+                        }
+                        else -> {
                             viewModel.handleApiWay(
                                 apiWay = apiWay,
                                 viewModel = viewModel,
                                 args = arrayOf(textFieldInputFirst, textFieldInputSecond)
                             )
-                        } else {
-                            showMessage(context, "Invalid Date!")
                         }
-                    } else {
-                        if(textFieldInputFirst.value.isNotBlank()){
-                            viewModel.handleApiWay(
-                                apiWay = apiWay,
-                                viewModel = viewModel,
-                                args = arrayOf(textFieldInputFirst, textFieldInputSecond)
-                            )
-                        }
-                        else{
-                            showMessage(context, "Invalid Number!")
-                        }
+
                     }
-
-
                 },
 
                 modifier = modifier
