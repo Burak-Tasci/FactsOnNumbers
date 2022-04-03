@@ -1,6 +1,7 @@
 package com.tsci.factsonnumbers.presentation.facts_options
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
@@ -23,53 +24,55 @@ fun OptionsListScreen(
         color = MaterialTheme.colors.background,
 
         ) {
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .padding(8.dp, 72.dp, 8.dp, 72.dp)
                 .fillMaxSize(),
 
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            ButtonsRow(
-                text1 = "Trivia Info",
-                onClick1 = {
-                    navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.TRIVIA}")
-                },
-                text2 = "Math Info",
-                onClick2 = {
-                    navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.MATH}")
-                }
-            )
-            ButtonsRow(
-                text1 = "Date Info",
-                onClick1 = {
-                    navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.DATE}")
-                },
-                text2 = "Year Info",
-                onClick2 = {
-                    navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.YEAR}")
-                }
-            )
-            ButtonsRow(
-                text1 = "Random Trivia Info",
-                onClick1 = {
-                    navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.RANDOM_TRIVIA}")
-                },
-                text2 = "Random Math Info",
-                onClick2 = {
-                    navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.RANDOM_MATH}")
-                }
-            )
-            ButtonsRow(
-                text1 = "Random Date Info",
-                onClick1 = {
-                    navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.RANDOM_DATE}")
-                },
-                text2 = "Random Year Info",
-                onClick2 = {
-                    navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.RANDOM_YEAR}")
-                }
-            )
+            item {
+                ButtonsRow(
+                    text1 = "Trivia Info",
+                    onClick1 = {
+                        navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.TRIVIA}")
+                    },
+                    text2 = "Math Info",
+                    onClick2 = {
+                        navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.MATH}")
+                    }
+                )
+                ButtonsRow(
+                    text1 = "Date Info",
+                    onClick1 = {
+                        navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.DATE}")
+                    },
+                    text2 = "Year Info",
+                    onClick2 = {
+                        navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.YEAR}")
+                    }
+                )
+                ButtonsRow(
+                    text1 = "Random Trivia Info",
+                    onClick1 = {
+                        navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.RANDOM_TRIVIA}")
+                    },
+                    text2 = "Random Math Info",
+                    onClick2 = {
+                        navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.RANDOM_MATH}")
+                    }
+                )
+                ButtonsRow(
+                    text1 = "Random Date Info",
+                    onClick1 = {
+                        navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.RANDOM_DATE}")
+                    },
+                    text2 = "Random Year Info",
+                    onClick2 = {
+                        navController.navigate(Screen.FactDetailScreen.route + "/${ApiWay.RANDOM_YEAR}")
+                    }
+                )
+            }
 
         }
     }
