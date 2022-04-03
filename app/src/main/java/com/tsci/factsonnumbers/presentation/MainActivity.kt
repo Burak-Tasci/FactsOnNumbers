@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -37,22 +38,24 @@ class MainActivity : ComponentActivity() {
 
             val scaffoldState = rememberScaffoldState()
             FactsOnNumbersTheme {
-                // A surface container using the 'background' color from the theme
+
                 Scaffold(
                     scaffoldState = scaffoldState,
                     topBar = {
                         TopAppBar(
-                            elevation = 8.dp
-                        ) {
-                            Text(
-                                text = stringResource(id = R.string.app_name),
-                                style = MaterialTheme.typography.h4,
-                                fontFamily = FontFamily.Serif,
-                                textAlign = TextAlign.Left,
-                                modifier = Modifier
-                                    .padding(8.dp)
-                            )
-                        }
+                            elevation = 8.dp,
+                            title = {
+                                Text(
+                                    text = stringResource(id = R.string.app_name),
+                                    style = MaterialTheme.typography.h4,
+                                    fontFamily = FontFamily.Serif,
+                                    textAlign = TextAlign.Center,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(8.dp)
+                                )
+                            }
+                        )
                     }
                 ) {
                     Surface(
