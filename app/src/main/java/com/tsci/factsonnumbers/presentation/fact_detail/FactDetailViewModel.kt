@@ -159,7 +159,11 @@ class FactDetailViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
-    fun handleApiWay(apiWay: ApiWay, viewModel: FactDetailViewModel, vararg args: MutableState<String>): Boolean {
+    fun handleApiWay(
+        apiWay: ApiWay,
+        viewModel: FactDetailViewModel,
+        vararg args: MutableState<String>
+    ): Boolean {
         when (apiWay) {
 
             ApiWay.TRIVIA -> {
