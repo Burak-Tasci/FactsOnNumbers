@@ -6,16 +6,20 @@ import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
@@ -28,12 +32,14 @@ import com.tsci.factsonnumbers.presentation.fact_detail.components.BasicDropDown
 /*
     Detail screen to represent fact text to user
  */
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun FactDetailScreen(
     apiWay: ApiWay,
     viewModel: FactDetailViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
+    val keyboardController = LocalSoftwareKeyboardController.current
 
     var visibilityFirst: Boolean = true
     var visibilitySecond: Boolean = false
@@ -65,7 +71,7 @@ fun FactDetailScreen(
     Surface(
         color = MaterialTheme.colors.background
     ) {
-        Column() {
+        Column {
             Card(
                 shape = RoundedCornerShape(20.dp),
                 border = BorderStroke(2.dp, MaterialTheme.colors.primary),
@@ -97,9 +103,13 @@ fun FactDetailScreen(
                 when (apiWay) {
                     ApiWay.YEAR -> {
                         OutlinedTextField(
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
                             value = textFieldInputFirst.value,
-                            onValueChange = { textFieldInputFirst.value = it },
+                            keyboardActions = KeyboardActions(onDone = {
+                                keyboardController?.hide()
+                            }),
+                            singleLine = true,
+                            onValueChange = { textFieldInputFirst.value = it.filter { it != '\n' } },
                             shape = RoundedCornerShape(20.dp),
                             label = { Text(text = "Year") },
                             modifier = modifier
@@ -107,9 +117,13 @@ fun FactDetailScreen(
                     }
                     ApiWay.TRIVIA, ApiWay.MATH -> {
                         OutlinedTextField(
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
                             value = textFieldInputFirst.value,
-                            onValueChange = { textFieldInputFirst.value = it },
+                            keyboardActions = KeyboardActions(onDone = {
+                               keyboardController?.hide()
+                            }),
+                            singleLine = true,
+                            onValueChange = { textFieldInputFirst.value = it.filter { it != '\n' } },
                             shape = RoundedCornerShape(20.dp),
                             label = { Text(text = "Number") },
                             modifier = modifier
