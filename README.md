@@ -23,9 +23,6 @@ Facts On Numbers app represents fun facts about numbers and dates according to e
 </p>
 
 ### Dark Mode
-![darkmode_result1])
-![darkmode_result2]()
-![darkmode_result3]()
 
 <p>
   <img src="https://user-images.githubusercontent.com/60064340/163721327-04a912e5-33df-4297-b78a-ecefed433d02.png" width=20%>
