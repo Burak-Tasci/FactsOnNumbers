@@ -5,7 +5,7 @@ Facts On Numbers app represents fun facts about numbers and dates according to e
 - Material Library
 - Coroutines
 - Dagger Hilt
-- Retrofi
+- Retrofit
 
 ## Architecture
 - MVVM
@@ -13,25 +13,28 @@ Facts On Numbers app represents fun facts about numbers and dates according to e
 ## Screenshots
 ### Light Mode
 <p>
-  <img src="https://user-images.githubusercontent.com/60064340/163708826-db926e3a-7f54-4bf7-909c-43abcc2a4195.png" width=20%>
+  <img src="https://user-images.githubusercontent.com/60064340/163721208-4787f499-59e7-4fc2-952d-da74e1e0642a.png" width=20%>
   &nbsp
-  <img src="https://user-images.githubusercontent.com/60064340/163708834-19b96b5b-e09f-48cf-b881-0c1d17138603.png" width=20%>
+  <img src="https://user-images.githubusercontent.com/60064340/163721261-b2cdfa75-53b0-48dc-8779-59da09ade08d.png" width=20%>
   &nbsp
-  <img src="https://user-images.githubusercontent.com/60064340/163708841-61b3cf1d-fd08-4ffc-917c-171d50cd8592.png" width=20%>
+  <img src="https://user-images.githubusercontent.com/60064340/163721274-7258ed8c-81b6-45c7-b17e-15041fc5ef0d.png" width=20%>
   &nbsp
-  <img src="https://user-images.githubusercontent.com/60064340/163708842-9a6cffd0-1217-421b-bc6a-a8e484d2ce59.png" width=20%>  
+  <img src="https://user-images.githubusercontent.com/60064340/163721279-d47e3e73-a120-411a-85ca-ae09a962567d.png" width=20%>  
 </p>
 
 ### Dark Mode
+![darkmode_result1])
+![darkmode_result2]()
+![darkmode_result3]()
 
 <p>
-  <img src="https://user-images.githubusercontent.com/60064340/163708848-d28900eb-15ec-4e63-97b7-417f734b9fdf.png" width=20%>
+  <img src="https://user-images.githubusercontent.com/60064340/163721327-04a912e5-33df-4297-b78a-ecefed433d02.png" width=20%>
   &nbsp
-  <img src="https://user-images.githubusercontent.com/60064340/163708849-64e177ff-3001-48d4-829e-a743a4639d10.png" width=20%>
+  <img src="https://user-images.githubusercontent.com/60064340/163721337-5def4f0c-3286-44a0-b7a0-9d238bd9adac.png" width=20%>
   &nbsp
-  <img src="https://user-images.githubusercontent.com/60064340/163714337-a3e50215-e391-45ce-82aa-79652893cb10.png" width=20%>
+  <img src="https://user-images.githubusercontent.com/60064340/163721339-0ece21f1-6848-4c30-83db-b8454490ee28.png" width=20%>
   &nbsp
-  <img src="https://user-images.githubusercontent.com/60064340/163714329-83caaa12-e38f-47ce-91d0-b07905cce633.png" width=20%>
+  <img src="https://user-images.githubusercontent.com/60064340/163721340-b567d36a-471e-467d-94c1-d8e75c8a65ce.png" width=20%>
 
 </p>
 
